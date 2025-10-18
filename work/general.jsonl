@@ -1,0 +1,68 @@
+{"Time":"2025-10-17T06:45:52.572564Z","Id":"57","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.572699Z","Id":"57","Command":"Query","Argument":"SELECT * FROM users LIMIT 3"}
+{"Time":"2025-10-17T06:45:52.585413Z","Id":"58","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.585531Z","Id":"58","Command":"Query","Argument":"SELECT name, city FROM users WHERE age > 30"}
+{"Time":"2025-10-17T06:45:52.595934Z","Id":"59","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.596040Z","Id":"59","Command":"Query","Argument":"SELECT COUNT(*), city FROM users GROUP BY city"}
+{"Time":"2025-10-17T06:45:52.609991Z","Id":"60","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.610156Z","Id":"60","Command":"Query","Argument":"SELECT u.name, o.amount FROM users u JOIN orders o ON u.id=o.user_id WHERE o.status='paid'"}
+{"Time":"2025-10-17T06:45:52.626142Z","Id":"61","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.626287Z","Id":"61","Command":"Query","Argument":"INSERT INTO users (name, age, city) VALUES ('Frank', 29, 'Kyoto')"}
+{"Time":"2025-10-17T06:45:52.636822Z","Id":"62","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.636896Z","Id":"62","Command":"Query","Argument":"INSERT INTO orders (user_id, amount, status) VALUES (6, 180.25, 'pending')"}
+{"Time":"2025-10-17T06:45:52.645695Z","Id":"63","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.645766Z","Id":"63","Command":"Query","Argument":"UPDATE users SET age = age + 1 WHERE city='Tokyo'"}
+{"Time":"2025-10-17T06:45:52.654705Z","Id":"64","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.654772Z","Id":"64","Command":"Query","Argument":"UPDATE orders SET status='paid' WHERE id=2"}
+{"Time":"2025-10-17T06:45:52.662585Z","Id":"65","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.662713Z","Id":"65","Command":"Query","Argument":"DELETE FROM orders WHERE status='cancelled'"}
+{"Time":"2025-10-17T06:45:52.670486Z","Id":"66","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.670591Z","Id":"66","Command":"Query","Argument":"SELECT u.name, COUNT(o.id) AS order_count, SUM(o.amount) AS total_amount\n        FROM users u LEFT JOIN orders o ON u.id=o.user_id\n        GROUP BY u.id ORDER BY total_amount DESC LIMIT 5"}
+{"Time":"2025-10-17T06:45:52.678539Z","Id":"67","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.678637Z","Id":"67","Command":"Query","Argument":"SELECT name FROM users WHERE id IN (SELECT user_id FROM orders WHERE amount > 200)"}
+{"Time":"2025-10-17T06:45:52.686410Z","Id":"68","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.686509Z","Id":"68","Command":"Query","Argument":"SELECT * FROM users WHERE id = 1"}
+{"Time":"2025-10-17T06:45:52.694342Z","Id":"69","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.694430Z","Id":"69","Command":"Query","Argument":"SELECT * FROM users WHERE id = 2"}
+{"Time":"2025-10-17T06:45:52.701881Z","Id":"70","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.701976Z","Id":"70","Command":"Query","Argument":"SELECT * FROM users WHERE id = 3"}
+{"Time":"2025-10-17T06:45:52.710036Z","Id":"71","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.710126Z","Id":"71","Command":"Query","Argument":"SELECT * FROM users WHERE id = 4"}
+{"Time":"2025-10-17T06:45:52.718111Z","Id":"72","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.718217Z","Id":"72","Command":"Query","Argument":"SELECT * FROM users WHERE id = 5"}
+{"Time":"2025-10-17T06:45:52.725914Z","Id":"73","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:45:52.725995Z","Id":"73","Command":"Query","Argument":"SET GLOBAL general_log = OFF"}
+{"Time":"2025-10-17T06:48:23.066408Z","Id":"126","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.066531Z","Id":"126","Command":"Query","Argument":"SELECT * FROM users LIMIT 3"}
+{"Time":"2025-10-17T06:48:23.077304Z","Id":"127","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.077410Z","Id":"127","Command":"Query","Argument":"SELECT name, city FROM users WHERE age > 30"}
+{"Time":"2025-10-17T06:48:23.086232Z","Id":"128","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.086347Z","Id":"128","Command":"Query","Argument":"SELECT COUNT(*), city FROM users GROUP BY city"}
+{"Time":"2025-10-17T06:48:23.095807Z","Id":"129","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.095908Z","Id":"129","Command":"Query","Argument":"SELECT u.name, o.amount FROM users u JOIN orders o ON u.id=o.user_id WHERE o.status='paid'"}
+{"Time":"2025-10-17T06:48:23.104560Z","Id":"130","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.104655Z","Id":"130","Command":"Query","Argument":"INSERT INTO users (name, age, city) VALUES ('Frank', 29, 'Kyoto')"}
+{"Time":"2025-10-17T06:48:23.115006Z","Id":"131","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.115132Z","Id":"131","Command":"Query","Argument":"INSERT INTO orders (user_id, amount, status) VALUES (6, 180.25, 'pending')"}
+{"Time":"2025-10-17T06:48:23.124510Z","Id":"132","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.124585Z","Id":"132","Command":"Query","Argument":"UPDATE users SET age = age + 1 WHERE city='Tokyo'"}
+{"Time":"2025-10-17T06:48:23.134230Z","Id":"133","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.134388Z","Id":"133","Command":"Query","Argument":"UPDATE orders SET status='paid' WHERE id=2"}
+{"Time":"2025-10-17T06:48:23.143267Z","Id":"134","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.143380Z","Id":"134","Command":"Query","Argument":"DELETE FROM orders WHERE status='cancelled'"}
+{"Time":"2025-10-17T06:48:23.151636Z","Id":"135","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.151711Z","Id":"135","Command":"Query","Argument":"SELECT u.name, COUNT(o.id) AS order_count, SUM(o.amount) AS total_amount\n        FROM users u LEFT JOIN orders o ON u.id=o.user_id\n        GROUP BY u.id ORDER BY total_amount DESC LIMIT 5"}
+{"Time":"2025-10-17T06:48:23.159000Z","Id":"136","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.159078Z","Id":"136","Command":"Query","Argument":"SELECT name FROM users WHERE id IN (SELECT user_id FROM orders WHERE amount > 200)"}
+{"Time":"2025-10-17T06:48:23.166624Z","Id":"137","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.166704Z","Id":"137","Command":"Query","Argument":"SELECT * FROM users WHERE id = 1"}
+{"Time":"2025-10-17T06:48:23.173955Z","Id":"138","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.174041Z","Id":"138","Command":"Query","Argument":"SELECT * FROM users WHERE id = 2"}
+{"Time":"2025-10-17T06:48:23.181368Z","Id":"139","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.181446Z","Id":"139","Command":"Query","Argument":"SELECT * FROM users WHERE id = 3"}
+{"Time":"2025-10-17T06:48:23.188645Z","Id":"140","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.188722Z","Id":"140","Command":"Query","Argument":"SELECT * FROM users WHERE id = 4"}
+{"Time":"2025-10-17T06:48:23.195858Z","Id":"141","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.195938Z","Id":"141","Command":"Query","Argument":"SELECT * FROM users WHERE id = 5"}
+{"Time":"2025-10-17T06:48:23.203081Z","Id":"142","Command":"Query","Argument":"select @@version_comment limit 1"}
+{"Time":"2025-10-17T06:48:23.203159Z","Id":"142","Command":"Query","Argument":"SET GLOBAL general_log = OFF"}

@@ -1,0 +1,3 @@
+{"q":"select 1"}
+{"q":"select 2"}
+{"q":"SELECT name, age FROM users GROUP BY name"}

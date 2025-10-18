@@ -1,0 +1,57 @@
+name: qube                        # Compose プロジェクト名（固定したい場合は .env の COMPOSE_PROJECT_NAME でもOK）
+
+networks:
+  qube-net:
+    name: qube-net
+
+volumes:
+  mysql_data:
+    name: qube-mysql-data
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: qube-db
+    restart: unless-stopped
+    networks:
+      - qube-net
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: test
+      TZ: Asia/Tokyo
+    # MySQL 設定は conf/my.cnf を読み込ませる
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./conf/my.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - ./work:/work:ro
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -ppass || exit 1"]
+      interval: 3s
+      timeout: 2s
+      retries: 30
+
+  qube:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qube-cli
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - qube-net
+    tty: true
+    stdin_open: true
+    environment:
+      # MySQL へはサービス名 "db" で接続
+      DSN: root:pass@tcp(db:3306)/test
+      TZ: Asia/Tokyo
+    volumes:
+      - mysql_data:/logs:ro     # db の general.log を共有で参照
+      - ./work:/work
+      - ./out:/out
+    # 手動操作前提で待機（exec で入って qube/genlog を叩く）
+    command: ["-lc", "tail -f /dev/null"]
