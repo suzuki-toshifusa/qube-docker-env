@@ -6,6 +6,8 @@
 
 qubeはデータベース負荷テストツールで、JSON Lines形式のクエリファイルを使用してMySQLやPostgreSQLに対する負荷テストを実行できます。このリポジトリは、qubeをDocker環境で簡単に試すための環境を提供します。
 
+このコンテナ内では、docker-compose.ymlファイルの 環境変数 DSN に記載しています。
+
 ## 構成
 
 ```
@@ -46,6 +48,19 @@ docker compose exec db mysql -uroot -ppass test < work/setup.sql
 - `orders`: 注文情報（5件のサンプルデータ）
 
 ## 使い方
+
+### DSN（Data Source Name）
+
+qube が採用している形式は、基本的に Go の標準ライブラリ database/sql が利用する DSN 形式（MySQL ドライバ: go-sql-driver/mysql) に準拠しています。
+
+```
+[username[:password]]@protocol(address)/dbname?param=value
+```
+
+例
+```
+root:pass@tcp(db:3306)/test
+```
 
 ### 基本的な負荷テスト
 
