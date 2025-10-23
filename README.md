@@ -150,7 +150,7 @@ docker compose exec db bash /work/scripts/run_queries.sh
 ```
 
 ```bash
-# General Logを有効化（dbコンテナ側）
+# General Logを無効化（dbコンテナ側）
 docker compose exec db mysql -uroot -ppass -e "SET GLOBAL general_log = 'OFF'"
 ```
 
